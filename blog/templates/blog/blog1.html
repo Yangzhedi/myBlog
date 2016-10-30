@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blog1</title>
+</head>
+<body>
+{% extends "base.html" %}
+    {% block content %}
+      <h2>{{  post.title }}</h2>
+      <p>{{ post.timestamp | date:"1,F jS"}}</p>
+      <p>{{ post.body }}</p>
+    {% endblock %}
+
+</body>
+</html>

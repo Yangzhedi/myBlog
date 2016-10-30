@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The blog list</title>
+</head>
+<body>
+{% extends "base.html" %}
+  {% block content %}
+      {% for post in posts %}
+{#          {% i=0 %}#}
+      <h2><a href='./blog/blog1.html'>{{  post.title }}</a></h2>
+      <p>{{ post.timestamp | date:"1,F jS"}}</p>
+      <p>{{ post.body }}</p>
+{#          {% i++ %}#}
+      {% endfor %}
+  {% endblock %}
+</body>
+</html>
