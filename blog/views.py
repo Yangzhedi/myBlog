@@ -1,22 +1,35 @@
 #coding=utf-8
+import json
 from django.shortcuts import render
 from blog.models import BlogsPost
 from django.shortcuts import render_to_response
 from django.template import loader,Context
 from django.http import HttpResponse
-# Create your views here.
+
+
 def index(request):
     blog_list = BlogsPost.objects.all()
     # print blog_list+"11111"
-    return render_to_response('index.html',{'posts':blog_list})
+    list = ['view', 'Json', 'JS']
+    return render(request, 'index.html', {
+        'List': json.dumps(list),
+    })
+    # return render_to_response('index.html',{'posts':blog_list})
     # posts = BlogsPost.objects.all()
     # t = loader.get_template("index.html")
     # c = Context({'posts': posts})
     # return HttpResponse(t.render(c))
 
-def main(request):
+def index2(request):
     blog_list = BlogsPost.objects.all()
-    return render_to_response('main.html')
+    # print blog_list+"11111"
+    return render_to_response('index2.html',{'posts':blog_list})
+
+def main(request):
+    list = ['view', 'Json', 'JS']
+    return render(request, 'main.html', {
+        'List': json.dumps(list),
+    })
 
 def hello(request):
     return HttpResponse("Hello world")

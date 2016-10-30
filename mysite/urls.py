@@ -19,13 +19,14 @@ from django.conf.urls import url
 from django.contrib import admin
 
 # from . import blog.views
-from blog.views import index,hello,main,blog1
+from blog.views import index,hello,main,blog1,index2
 
 # url用正则表达式
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/$', index),
+    url(r'^index2/$', index2),
     url(r'^hello/$', hello),
-    url(r'^hello/main', main),
+    url(r'^main/', main),
     url(r'^index/blog/blog1', blog1)
 ]

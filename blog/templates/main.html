@@ -11,6 +11,7 @@
         }
         body{color:#fff;background:#fff;padding:0 5em;margin:0}
     </style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 {#    {% extends "base.html" %}#}
@@ -19,5 +20,11 @@
             <h3>the head of main</h3>
             <p>the content of main </p></div>
 {#        {% endblock %}#}
+<div id="list"> 学习 </div>
 </body>
+<script type="text/javascript">
+    var List = {{ List|safe }};
+    alert(List);
+    $('#list').append(List[1]);
+</script>
 </html>
