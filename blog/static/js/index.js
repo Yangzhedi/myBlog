@@ -1,5 +1,6 @@
 var React = require("react");
-var MessageBoard = require("./components/MessageBoard");
+var BlogBoard = require("./components/BlogBoard");
+var BlogBox = require("./components/BlogBox");
 
-React.render(<MessageBoard/>,document.getElementById("message-board-container"));
+React.render(<BlogBoard/>,document.getElementById("blog-container"));
 

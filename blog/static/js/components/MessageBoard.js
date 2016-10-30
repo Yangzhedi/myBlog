@@ -3,6 +3,7 @@ var MessageList = require("./MessageList");
 var SearchBar = require("./SearchBar");
 var MessageForm = require("./MessageForm");
 var Pager =  require("./Pager");
+var BlogHeader = require("./BlogHeader");
 
 var MessageBoard = React.createClass({
     getInitialState : function(){
@@ -69,6 +70,7 @@ var MessageBoard = React.createClass({
         };
         return(
             <div>
+                <BlogHeader/>
                 <MessageForm submitMessage={this.submitMessage}/>
                 <div className="well">
                     <SearchBar searchHandler={this.searchHandler}/>

@@ -6,3 +6,30 @@ footer {
 	margin: 50px 0;
 }
 
+.blog-header{
+	width:100%;
+	height: 50px;
+	background-color: #5bc0de;
+}
+
+
+/*BlogBox style is here*/
+.blog-box{
+	width: 100%;
+	margin-bottom:70px;
+}
+.blog-box p{
+	width: 90%;
+	word-break: break-all;
+}
+.blog-box h2 a{
+	text-decoration:none;
+	color:black;
+}
+.blog-box span a{
+	color:black;
+	text-decoration: underline;
+}
+.blog-box span a:hover{
+	color:orangered;
+}
