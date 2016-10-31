@@ -19,7 +19,7 @@ from django.conf.urls import url
 from django.contrib import admin
 
 # from . import blog.views
-from blog.views import index,hello,main,blog1,index2
+from blog.views import index,hello,main,blog1,index2,ajax_dict
 
 # url用正则表达式
 urlpatterns = [
@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^index2/$', index2),
     url(r'^hello/$', hello),
     url(r'^main/', main),
-    url(r'^index/blog/blog1', blog1)
+    url(r'^index2/blog/blog1', blog1),
+    url(r'^index/ajax_dict/$', ajax_dict, name='ajax-dict'),
 ]

@@ -1,7 +1,7 @@
 var React = require("react");
 
 var BlogBox = React.createClass({
-    render : function(){
+    render:function(){
         return(
             <div className="blog-box">
                 <h2 className="item-head"><a href="javascript:void(0)">blog</a></h2>
@@ -9,7 +9,7 @@ var BlogBox = React.createClass({
                     1111111111111111111111111111
                     1111111111111111111111111111
                     1111111111111111111111111111111111111111111111111111</p>
-                <span><a href="javascript:void(0)">获取更多</a></span>
+                <span><a href="javascript:void(0)"> 阅读全文 </a></span>
                 <hr style={{border:'1px dashed #929292', width:'70%',height:1,position:'absolute'}}/>
             </div>
         )

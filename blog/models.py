@@ -7,9 +7,10 @@ from django.contrib import admin
 class BlogsPost(models.Model):
     title = models.CharField(max_length = 150)
     body = models.TextField()
+    author = models.CharField(max_length = 50)
     timestamp = models.DateTimeField()
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('title','timestamp')
+    list_display = ('title','timestamp','author')
 
 admin.site.register(BlogsPost,BlogPostAdmin)
