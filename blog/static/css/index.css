@@ -1,11 +1,23 @@
 body {
 	margin-top: 100px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
+	font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
 }
 
 footer {
 	margin: 50px 0;
 }
-
+.navbar{
+	height: 70px;
+	background-color: rgb(65, 118, 144);
+}
+.navbar-inverse {
+    border-color:  rgb(65, 118, 144);
+}
+.navbar-header > .navbar-brand{
+	color:#f5dd5d;
+	font-size: 24px;
+	line-height: 45px;
+}
 .blog-header{
 	width:100%;
 	height: 50px;

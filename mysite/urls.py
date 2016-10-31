@@ -29,5 +29,5 @@ urlpatterns = [
     url(r'^hello/$', hello),
     url(r'^main/', main),
     url(r'^index2/blog/blog1', blog1),
-    url(r'^index/ajax_dict/$', ajax_dict, name='ajax-dict'),
+    url(r'^index/ajax_dict/$', ajax_dict),
 ]
