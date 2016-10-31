@@ -24,4 +24,4 @@
 
 
 添加博客的界面是这样的：
-![cmd-markdown-logo](blog/static/imgs/add.png)
+![add](https://yangzhedi.github.io/img/add.png)
