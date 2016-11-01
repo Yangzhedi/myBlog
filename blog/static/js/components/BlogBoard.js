@@ -13,11 +13,11 @@ var BlogBoard = React.createClass({
             type : "GET",
             success:function(response,stutas,xhr){
                 console.log(JSON.parse(response));
-                var responseData = JSON.parse(response)
+                var responseData = JSON.parse(response);
                 this.setState({
                    data:responseData.result
-                })
-                console.log(responseData.result)
+                });
+                console.log(responseData.result);
             }.bind(this)
         });
     },
