@@ -19,6 +19,8 @@
 
 再`python manage.py runserver` 开启服务器。
 
+`python manage.py createsuperuser`之后，`127.0.0.1:8000/admin`即可进入后台，
+
 开启服务器之后，
 
 - [x] `http://127.0.0.1:8000/index`  是前后分离版，ajax调用后台博客数据已经完成。

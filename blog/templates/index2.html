@@ -24,15 +24,17 @@
                             <h2 className="item-head"><a href='/blog/{{  post.id }}'>{{  post.title }}</a></h2>
                             <p>{{ post.timestamp | date:"1,F jS"}} By {{ post.author}}</p>
                             <p>{{ post.body }}</p>
-                            <span><a href='/blog/{{  post.id }}' 阅读全文 >> </a></span>
+                            <span><a href='/blog/{{  post.id }}'> 阅读全文 >> </a></span>
                             <hr style="border:1px dashed #929292; width:70%;height:1px;position:absolute"/>
                         </div>
+                    {% empty %}
+                        <p>There are no athletes. Only computer programmers.</p>
                     {% endfor %}
                 {% endblock %}
             </div>
             <div class="col-lg-4">
                 <div class="well">
-                    <h4>About Me</h4><img style="float: right;margin-top:-20px;" width="71" height="100" src="../static/imgs/me.jpg"/>
+                    <h4>About Me</h4><img style="float: right;margin-top:-20px;margin-right:20px;" width="100" height="100" src="../static/imgs/me.jpg"/>
                     <p>个人介绍：1111111111</p>
                     <p>个人介绍：1111111111</p>
                     <p>个人介绍：1111111111</p>

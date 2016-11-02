@@ -7,7 +7,7 @@ from django.contrib import admin
 class BlogsPost(models.Model):
     title = models.CharField(max_length = 150)
     body = models.TextField()
-    author = models.CharField(max_length = 50)
+    author = models.CharField(max_length = 50,default='Timi')
     timestamp = models.DateTimeField()
     blog_id = models.IntegerField(default=0)
 
