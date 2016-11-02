@@ -21,10 +21,10 @@
                 {% block content %}
                     {% for post in posts %}
                         <div class="blog-box">
-                            <h2 className="item-head"><a href='./blog/blog1.html'>{{  post.title }}</a></h2>
+                            <h2 className="item-head"><a href='/blog/{{  post.id }}'>{{  post.title }}</a></h2>
                             <p>{{ post.timestamp | date:"1,F jS"}} By {{ post.author}}</p>
                             <p>{{ post.body }}</p>
-                            <span><a href="javascript:void(0)"> 阅读全文 >> </a></span>
+                            <span><a href='/blog/{{  post.id }}' 阅读全文 >> </a></span>
                             <hr style="border:1px dashed #929292; width:70%;height:1px;position:absolute"/>
                         </div>
                     {% endfor %}

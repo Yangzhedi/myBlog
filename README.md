@@ -9,7 +9,7 @@
 
 再 `webpack --watch` 监听前端代码编译，再开启django的服务器。
 
-react前端部分readme请移步[前端部分readme](blog/static/js/README.md)
+具体的react前端部分日记请移步[前端部分](blog/static/js/README.md)
 
 后端：
 
@@ -23,3 +23,7 @@ react前端部分readme请移步[前端部分readme](blog/static/js/README.md)
 
 - [x] `http://127.0.0.1:8000/index`  是前后分离版，ajax调用后台博客数据已经完成。
 - [ ] `http://127.0.0.1:8000/index2` 是前后未分离版，可以进入后台修改博客在前台展示。
+
+两版均已增加单页弹出博客。
+
+具体的后端部分日记请移步[后端部分](blog/README.md)

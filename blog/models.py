@@ -9,8 +9,9 @@ class BlogsPost(models.Model):
     body = models.TextField()
     author = models.CharField(max_length = 50)
     timestamp = models.DateTimeField()
+    blog_id = models.IntegerField(default=0)
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('title','timestamp','author')
+    list_display = ('id','title','timestamp','author')
 
 admin.site.register(BlogsPost,BlogPostAdmin)
