@@ -7,11 +7,13 @@
 
 （如果没有webpack）请`npm install -g webpack` 全局安装webpack 
 
-再 `webpack --watch` 监听前端代码编译，再开启django的服务器
+再 `webpack --watch` 监听前端代码编译，再开启django的服务器。
+
+react前端部分readme请移步[前端部分readme](blog/static/js/README.md)
 
 后端：
 
-安装一些必须的模块之后，
+安装一些必须的模块之后，在根目录的命令行中，
 
 `python manage.py makemigrations` 之后 `python manage.py migrate` 更新下数据库
 
@@ -19,11 +21,5 @@
 
 开启服务器之后，
 
-- [x] `http://127.0.0.1:8000/index`  是前后分离版，数据读取还有些问题。
+- [x] `http://127.0.0.1:8000/index`  是前后分离版，ajax调用后台博客数据已经完成。
 - [ ] `http://127.0.0.1:8000/index2` 是前后未分离版，可以进入后台修改博客在前台展示。
-
-2016-11-1更新：
-
-数据的传递已经完成，可以在react的`BlogBoard.js`组件中获取blog的数据，再循环渲染出每一个`BlogBox`。
-
-前后端分离与未分离样式还未统一，mark。

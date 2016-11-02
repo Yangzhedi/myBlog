@@ -2,16 +2,20 @@ body {
 	margin-top: 100px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
 	font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
 }
-
 footer {
 	margin: 50px 0;
 }
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+/*index.html样式*/
 .navbar{
 	height: 70px;
-	background-color: rgb(65, 118, 144);
+	background-color:#417690;
 }
 .navbar-inverse {
-    border-color:  rgb(65, 118, 144);
+    border-color:#417690;
 }
 .navbar-header > .navbar-brand{
 	color:#f5dd5d;
@@ -35,13 +39,15 @@ footer {
 	word-break: break-all;
 }
 .blog-box h2 a{
-	text-decoration:none;
-	color:black;
+	color:#428bca;
+}
+.blog-box h2 a:hover{
+	color:#417690;
 }
 .blog-box span a{
 	color:black;
 	text-decoration: underline;
 }
 .blog-box span a:hover{
-	color:orangered;
+	color:#428bca;
 }
