@@ -1,5 +1,6 @@
 #coding=utf-8
 import json
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from blog.models import BlogsPost
 from django.shortcuts import render_to_response
@@ -65,18 +66,15 @@ def ajax_time(request):
 
 
 
-
-
-
-
-
-
-
-
 def index2(request):
+    limit = 4
     blog_list = BlogsPost.objects.all()
-    # print blog_list+"11111"
-    return render_to_response('index2.html',{'posts':blog_list})
+    paginatior = Paginator(blog_list, limit)
+    page = request.GET.get('page', 1)
+    loaded = paginatior.page(page)
+    content = {'posts':loaded}
+    return render_to_response('index2.html',content)
+
 
 def main(request):
     list = ['view', 'Json', 'JS']

@@ -25,6 +25,7 @@ from blog.views import index,hello,main,blog1,index2,ajax_dict,ajax_time,search_
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/$', index),
+    url(r'^$', index),
     url(r'^index2/$', index2),
     url(r'^hello/$', hello),
     url(r'^main/', main),

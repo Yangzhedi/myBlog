@@ -51,3 +51,12 @@ a {
 .blog-box span a:hover{
 	color:#428bca;
 }
+
+
+/*index2样式*/
+.left-arrow,.right-arrow{
+	color:red;
+}
+.paginator-nums{
+	display:inline-block;
+}

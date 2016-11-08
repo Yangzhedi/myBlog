@@ -18,19 +18,32 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8" id="blog-container">
-                {% block content %}
-                    {% for post in posts %}
-                        <div class="blog-box">
-                            <h2 className="item-head"><a href='/blog/{{  post.id }}'>{{  post.title }}</a></h2>
-                            <p>{{ post.timestamp | date:"1,F jS"}} By {{ post.author}}</p>
-                            <p>{{ post.body }}</p>
-                            <span><a href='/blog/{{  post.id }}'> 阅读全文 >> </a></span>
-                            <hr style="border:1px dashed #929292; width:70%;height:1px;position:absolute"/>
-                        </div>
-                    {% empty %}
-                        <p>There are no athletes. Only computer programmers.</p>
-                    {% endfor %}
-                {% endblock %}
+
+                {% for post in posts %}
+                    <div class="blog-box">
+                        <h2 className="item-head"><a href='/blog/{{  post.id }}'>{{  post.title }}</a></h2>
+                        <p>{{ post.timestamp | date:"1,F jS"}} By {{ post.author}}</p>
+                        <p>{{ post.body }}</p>
+                        <span><a href='/blog/{{  post.id }}'> 阅读全文 >> </a></span>
+                        <hr style="border:1px dashed #929292; width:70%;height:1px;position:absolute"/>
+                    </div>
+                {% empty %}
+                    <p>There are no athletes. Only computer programmers.</p>
+                {% endfor %}
+                {# 分页符开始 #}
+                <div >
+                    {% if posts.has_previous %}
+                        <a class="icon item" href="?page={{ posts.previous_page_number }}">
+                          <i class="left-arrow"> < </i>
+                        </a>
+                    {% endif %}
+                    <div class="paginator-nums"> {{ posts.number }} of {{ posts.paginator.num_pages }} </div>
+                    {% if posts.has_next %}
+                        <a class="icon item" href="?page={{ posts.next_page_number }}">
+                            <i class="right-arrow"> > </i>
+                        </a>
+                    {% endif %}
+                </div>
             </div>
             <div class="col-lg-4">
                 <div class="well">
