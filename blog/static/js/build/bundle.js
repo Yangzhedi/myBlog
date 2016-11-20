@@ -18929,7 +18929,7 @@
 	                this.setState({
 	                   data:responseData.result
 	                });
-	                console.log(responseData.result);
+
 	            }.bind(this)
 	        });
 	    },
@@ -18937,12 +18937,13 @@
 	        this.getContent();
 	    },
 	    render : function(){
+	        console.log(this.state.data[0]);
 	        return(
 	            React.createElement("div", null, 
 	                
 	                    this.state.data.map(function(item,index){
 	                        return(
-	                            React.createElement(BlogBox, {title: item.title, body: item.body, id: item.id, 
+	                            React.createElement(BlogBox, {title: item.title, body: item.body, id: item.id, tag: item.tag, 
 	                                     author: item.author, timestamp: item.timestamp})
 	                        )
 	                    })
@@ -18961,6 +18962,19 @@
 	var React = __webpack_require__(1);
 
 	var BlogBox = React.createClass({displayName: "BlogBox",
+	    getInitialState : function(){
+	        return {
+	            tags: []
+	        }
+	    },
+	    //处理tags
+	    componentWillMount : function(){
+	        var tagsArr = []
+	        tagsArr = this.props.tag.split(',')
+	        this.setState({
+	            tags:tagsArr
+	        })
+	    },
 
 	    render:function(){
 	        var aHref = '../blog/'+this.props.id;
@@ -18968,6 +18982,12 @@
 	            React.createElement("div", {className: "blog-box"}, 
 	                React.createElement("h2", {className: "item-head"}, React.createElement("a", {href: aHref, target: "_blank"}, this.props.title)), 
 	                React.createElement("p", null, " ", this.props.timestamp, " By ", this.props.author), 
+	                
+	                    this.state.tags.map(function(item){
+	                        return React.createElement("span", {className: "blog-tag"}, item)
+	                    }), 
+	                
+	                /*<span className="blog-tag">{this.props.tag}</span>*/
 	                React.createElement("p", null, this.props.body.toString().slice(0,100), "... "), 
 	                React.createElement("span", null, React.createElement("a", {href: aHref, target: "_blank"}, " 阅读全文 ", '>>', " ", this.props.id)), 
 	                React.createElement("hr", {style: {border:'1px dashed #929292', width:'70%',height:1,position:'absolute'}})

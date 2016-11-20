@@ -17,7 +17,7 @@ var BlogBoard = React.createClass({
                 this.setState({
                    data:responseData.result
                 });
-                console.log(responseData.result);
+
             }.bind(this)
         });
     },
@@ -25,12 +25,13 @@ var BlogBoard = React.createClass({
         this.getContent();
     },
     render : function(){
+        console.log(this.state.data[0]);
         return(
             <div>
                 {
                     this.state.data.map(function(item,index){
                         return(
-                            <BlogBox title={item.title} body={item.body} id={item.id}
+                            <BlogBox title={item.title} body={item.body} id={item.id} tag={item.tag}
                                      author={item.author} timestamp={item.timestamp}/>
                         )
                     })

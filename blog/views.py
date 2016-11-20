@@ -36,7 +36,8 @@ def ajax_dict(request):
             "title":value.title,
             "body": value.body,
             "author": value.author,
-            "timestamp":value.timestamp.strftime('%Y-%m-%d')
+            "timestamp":value.timestamp.strftime('%Y-%m-%d'),
+            "tag": value.tag,
         }
         postData['result'].append(blog)
     # return HttpResponse(json.dumps({

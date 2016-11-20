@@ -51,6 +51,14 @@ a {
 .blog-box span a:hover{
 	color:#428bca;
 }
+.blog-tag{
+	display: inline-block;
+	margin: 0 10px 5px 0;
+	background-color: #eee;
+	padding: 5px;
+	border-radius: 4px;
+}
+
 
 
 /*index2样式*/
