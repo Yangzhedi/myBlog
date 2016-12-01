@@ -19,19 +19,20 @@ from django.conf.urls import url
 from django.contrib import admin
 
 # from . import blog.views
-from blog.views import index,hello,main,blog1,index2,ajax_dict,ajax_time,search_id
+from blog.views import index,hello,main,blog1,index2,ajax_dict,ajax_page,search_id
 
 # url用正则表达式
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/$', index),
     url(r'^$', index),
+    url(r'^index/$', index),
+
     url(r'^index2/$', index2),
     url(r'^hello/$', hello),
     url(r'^main/', main),
     url(r'^index2/blog/blog1', blog1),
-    url(r'^index/ajax_dict/$', ajax_dict),
-    url(r'^index/ajax_time/$', ajax_time),
+    url(r'^API/ajax_dict/$', ajax_dict),
+    url(r'^API/ajax_page/$', ajax_page),
 
     url(r'^blog/(?P<id>\d+)/$', search_id, name='page')
 ]

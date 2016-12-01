@@ -23,7 +23,7 @@
                     <div class="blog-box">
                         <h2 className="item-head"><a href='/blog/{{  post.id }}'>{{  post.title }}</a></h2>
                         <p>{{ post.timestamp | date:"1,F jS"}} By {{ post.author}}</p>
-                        <p>{{ post.body }}</p>
+                        <p>{{ post.body | truncatewords:"50" }}</p>
                         <span><a href='/blog/{{  post.id }}'> 阅读全文 >> </a></span>
                         <hr style="border:1px dashed #929292; width:70%;height:1px;position:absolute"/>
                     </div>

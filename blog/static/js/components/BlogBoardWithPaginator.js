@@ -1,7 +1,7 @@
 var React = require("react");
 var BlogBox = require("./BlogBox");
 
-var BlogBoard = React.createClass({
+var BlogBoardWithPainator = React.createClass({
     getInitialState : function(){
         return {
             data: []
@@ -12,37 +12,29 @@ var BlogBoard = React.createClass({
             page : 1
         };
         $.ajax({
-            url:'../API/ajax_dict',
-            type : "GET",
+            url:'/API/ajax_page',
+            type : "POST",
             data : data,
             success:function(response,stutas,xhr){
                 console.log(JSON.parse(response));
                 var responseData = JSON.parse(response);
                 this.setState({
-                   data:responseData.result
+                   data:responseData.page
                 });
 
             }.bind(this)
         });
     },
     componentWillMount : function(){
-        this.getContent();
+        // this.getContent();
     },
     render : function(){
-        console.log(this.state.data)
         return(
             <div>
-                {
-                    this.state.data.map(function(item,index){
-                        return(
-                            <BlogBox title={item.title} body={item.body} id={item.id} tag={item.tag}
-                                     author={item.author} timestamp={item.timestamp}/>
-                        )
-                    })
-                }
+               lalalalalal
             </div>
         )
     }
 });
 
-module.exports = BlogBoard;
+module.exports = BlogBoardWithPainator;

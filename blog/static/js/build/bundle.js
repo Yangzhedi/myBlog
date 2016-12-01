@@ -46,10 +46,10 @@
 
 	var React = __webpack_require__(1);
 	var BlogBoard = __webpack_require__(148);
+	var BlogBoardWithPaginator = __webpack_require__(150);
 
 	React.render(React.createElement(BlogBoard, null),document.getElementById("blog-container"));
-
-
+	// React.render(<BlogBoardWithPaginator/>,document.getElementById("blog-container"));
 
 /***/ },
 /* 1 */
@@ -18920,9 +18920,13 @@
 	        }
 	    },
 	    getContent:function(){
+	        var data = {
+	            page : 1
+	        };
 	        $.ajax({
-	            url:'/index/ajax_dict',
+	            url:'../API/ajax_dict',
 	            type : "GET",
+	            data : data,
 	            success:function(response,stutas,xhr){
 	                console.log(JSON.parse(response));
 	                var responseData = JSON.parse(response);
@@ -18937,7 +18941,7 @@
 	        this.getContent();
 	    },
 	    render : function(){
-	        console.log(this.state.data[0]);
+	        console.log(this.state.data)
 	        return(
 	            React.createElement("div", null, 
 	                
@@ -18997,6 +19001,51 @@
 	});
 
 	module.exports = BlogBox;
+
+/***/ },
+/* 150 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var BlogBox = __webpack_require__(149);
+
+	var BlogBoardWithPainator = React.createClass({displayName: "BlogBoardWithPainator",
+	    getInitialState : function(){
+	        return {
+	            data: []
+	        }
+	    },
+	    getContent:function(){
+	        var data = {
+	            page : 1
+	        };
+	        $.ajax({
+	            url:'/API/ajax_page',
+	            type : "POST",
+	            data : data,
+	            success:function(response,stutas,xhr){
+	                console.log(JSON.parse(response));
+	                var responseData = JSON.parse(response);
+	                this.setState({
+	                   data:responseData.page
+	                });
+
+	            }.bind(this)
+	        });
+	    },
+	    componentWillMount : function(){
+	        // this.getContent();
+	    },
+	    render : function(){
+	        return(
+	            React.createElement("div", null, 
+	               "lalalalalal"
+	            )
+	        )
+	    }
+	});
+
+	module.exports = BlogBoardWithPainator;
 
 /***/ }
 /******/ ]);

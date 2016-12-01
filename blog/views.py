@@ -20,30 +20,14 @@ def index(request):
 
 def ajax_dict(request):
     blog_list = BlogsPost.objects.all()
-    # data = []
-    # for i,value in enumerate(blog_list):
-    #     data[i]={}
-    #     data[i]["title"] = value.title
-    #
+    result = blog_list2json(blog_list)
     postData = {
-        'status':200,
-        'result':[]
+        'status': 200,
+        'result': result
     }
-    status = 111
-    for i,value in enumerate(blog_list):
-        blog={
-            "id":value.id,
-            "title":value.title,
-            "body": value.body,
-            "author": value.author,
-            "timestamp":value.timestamp.strftime('%Y-%m-%d'),
-            "tag": value.tag,
-        }
-        postData['result'].append(blog)
-    # return HttpResponse(json.dumps({
-    #     "status":status,
-    #     "result":result
-    # }))
+
+    print 'this is request111'
+    print request.GET["page"]
     return HttpResponse(json.dumps(postData))
 
 def search_id(request, id):
@@ -68,11 +52,11 @@ def ajax_time(request):
 
 
 def index2(request):
-    limit = 4
+    limit = 5
     blog_list = BlogsPost.objects.all()
-    paginatior = Paginator(blog_list, limit)
+    paginator = Paginator(blog_list, limit)
     page = request.GET.get('page', 1)
-    loaded = paginatior.page(page)
+    loaded = paginator.page(page)
     content = {'posts':loaded}
     return render_to_response('index2.html',content)
 
@@ -91,3 +75,47 @@ def blog1(request):
     post = blog_list[0]
     # print blog_list+"11111"
     return render_to_response('../templates/blog/blog.html', {'post':post})
+
+
+def ajax_page(request):
+    blog_list = BlogsPost.objects.all()
+    paginator = Paginator(blog_list, 4)
+    page = request.GET.get('page', 1)
+    loaded = paginator.page(page)
+
+    # paginator的range
+    page_range = paginator.page_range   # xrange 对象
+    first_page = page_range[0]
+    last_page = page_range[-1]
+    range = [first_page,last_page]
+    # 开始处理分页数据
+    page_result = []
+    for i in page_range:
+        page_result.append(blog_list2json(paginator.page(i).object_list))
+
+    postData = {
+        'status': 200,
+        'page': {
+            'count': paginator.num_pages,
+            'range': range,
+            'page_result': page_result
+        }
+    }
+
+    # postData = blog_list2json(paginator.page(1).object_list)
+    return HttpResponse(json.dumps(postData))
+
+
+def blog_list2json(blog_list):
+    result = []
+    for i, value in enumerate(blog_list):
+        blog = {
+            "id": value.id,
+            "title": value.title,
+            "body": value.body,
+            "author": value.author,
+            "timestamp": value.timestamp.strftime('%Y-%m-%d'),
+            "tag": value.tag,
+        }
+        result.append(blog)
+    return result
