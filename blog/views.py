@@ -26,8 +26,6 @@ def ajax_dict(request):
         'result': result
     }
 
-    print 'this is request111'
-    print request.GET["page"]
     return HttpResponse(json.dumps(postData))
 
 def search_id(request, id):
@@ -78,6 +76,10 @@ def blog1(request):
 
 
 def ajax_page(request):
+    print request.GET["page"]
+    pageNum = request.GET["page"]
+
+
     blog_list = BlogsPost.objects.all()
     paginator = Paginator(blog_list, 4)
     page = request.GET.get('page', 1)
@@ -93,12 +95,14 @@ def ajax_page(request):
     for i in page_range:
         page_result.append(blog_list2json(paginator.page(i).object_list))
 
+    page_one = blog_list2json(paginator.page(pageNum).object_list)
+
     postData = {
         'status': 200,
         'page': {
             'count': paginator.num_pages,
             'range': range,
-            'page_result': page_result
+            'page_result': page_one
         }
     }
 

@@ -48,8 +48,8 @@
 	var BlogBoard = __webpack_require__(148);
 	var BlogBoardWithPaginator = __webpack_require__(150);
 
-	React.render(React.createElement(BlogBoard, null),document.getElementById("blog-container"));
-	// React.render(<BlogBoardWithPaginator/>,document.getElementById("blog-container"));
+	// React.render(<BlogBoard/>,document.getElementById("blog-container"));
+	React.render(React.createElement(BlogBoardWithPaginator, null),document.getElementById("blog-container"));
 
 /***/ },
 /* 1 */
@@ -19012,34 +19012,76 @@
 	var BlogBoardWithPainator = React.createClass({displayName: "BlogBoardWithPainator",
 	    getInitialState : function(){
 	        return {
-	            data: []
+	            data: [],
+	            pageNow:1,
+	            pageCount:''
 	        }
 	    },
-	    getContent:function(){
+	    getContent:function(page){
 	        var data = {
-	            page : 1
+	            page : page
 	        };
 	        $.ajax({
-	            url:'/API/ajax_page',
-	            type : "POST",
+	            url:'../API/ajax_page',
+	            type : "GET",
 	            data : data,
 	            success:function(response,stutas,xhr){
 	                console.log(JSON.parse(response));
 	                var responseData = JSON.parse(response);
 	                this.setState({
-	                   data:responseData.page
+	                    data:responseData.page.page_result,
+	                    pageCount:responseData.page.count
 	                });
 
 	            }.bind(this)
 	        });
 	    },
 	    componentWillMount : function(){
-	        // this.getContent();
+	        this.getContent(this.state.pageNow);
+	    },
+	    leftHandler(){
+	        if(this.state.pageNow-1 > 0){
+	            this.setState({
+	                pageNow : this.state.pageNow-1
+	            });
+	            this.getContent(this.state.pageNow-1)
+	        }else{
+	            console.error('之前没有数据')
+	        }
+	    },
+	    rightHandler(){
+	        if(this.state.pageNow < this.state.pageCount){
+	            this.setState({
+	                pageNow : this.state.pageNow+1
+	            });
+	            this.getContent(this.state.pageNow+1);
+	        }else{
+	            console.error('之后没有数据')
+	        }
+	        console.log(this.state.pageNow + 'in rightHandler')
 	    },
 	    render : function(){
+	        // console.log(this.state.data)
+	        // console.log(this.state.pageCount)
 	        return(
 	            React.createElement("div", null, 
-	               "lalalalalal"
+	                
+	                    this.state.data.map(function(item,index){
+	                        return(
+	                            React.createElement(BlogBox, {title: item.title, body: item.body, id: item.id, tag: item.tag, 
+	                                     author: item.author, timestamp: item.timestamp})
+	                        )
+	                    }), 
+	                
+	                React.createElement("div", null, 
+	                    React.createElement("a", {class: "icon item", onClick: this.leftHandler}, 
+	                          React.createElement("i", {class: "left-arrow"}, " ", '<', " ")
+	                    ), 
+	                    React.createElement("div", {style: {display:'inline-block'}}, this.state.pageNow, "/", this.state.pageCount), 
+	                    React.createElement("a", {class: "icon item", onClick: this.rightHandler}, 
+	                          React.createElement("i", {class: "right-arrow"}, " ", '>', " ")
+	                    )
+	                )
 	            )
 	        )
 	    }
