@@ -6,7 +6,9 @@ var BlogBoardWithPainator = React.createClass({
         return {
             data: [],
             pageNow:1,
-            pageCount:''
+            pageCount:'',
+            rightState:true,
+            leftState:false
         }
     },
     getContent:function(page){
@@ -34,23 +36,41 @@ var BlogBoardWithPainator = React.createClass({
     leftHandler(){
         if(this.state.pageNow-1 > 0){
             this.setState({
-                pageNow : this.state.pageNow-1
+                pageNow : this.state.pageNow-1,
+                rightState:true
             });
+            if(this.state.pageNow == 2){
+                this.setState({
+                    leftState:false
+                })
+            }
             this.getContent(this.state.pageNow-1)
         }else{
-            console.error('之前没有数据')
+            console.error('之前没有数据');
+            this.setState({
+                leftState:false
+            })
         }
     },
     rightHandler(){
         if(this.state.pageNow < this.state.pageCount){
             this.setState({
-                pageNow : this.state.pageNow+1
+                pageNow : this.state.pageNow+1,
+                leftState:true
             });
             this.getContent(this.state.pageNow+1);
+            if(this.state.pageNow == this.state.pageCount-1){
+                this.setState({
+                    rightState:false
+                })
+            }
         }else{
-            console.error('之后没有数据')
+            console.error('之后没有数据');
+            this.setState({
+                rightState:false
+            })
         }
-        console.log(this.state.pageNow + 'in rightHandler')
+        console.log(this.state.rightState + 'in rightHandler')
     },
     render : function(){
         // console.log(this.state.data)
@@ -66,13 +86,13 @@ var BlogBoardWithPainator = React.createClass({
                     })
                 }
                 <div>
-                    <a class="icon item" onClick={this.leftHandler}>
+                    <button class="icon item" onClick={this.leftHandler} disabled={!this.state.leftState}>
                           <i class="left-arrow"> {'<'} </i>
-                    </a>
+                    </button>
                     <div style={{display:'inline-block'}}>{this.state.pageNow}/{this.state.pageCount}</div>
-                    <a class="icon item" onClick={this.rightHandler}>
+                    <button class="icon item" onClick={this.rightHandler} disabled={!this.state.rightState}>
                           <i class="right-arrow"> {'>'} </i>
-                    </a>
+                    </button>
                 </div>
             </div>
         )

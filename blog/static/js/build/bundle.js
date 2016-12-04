@@ -19014,7 +19014,9 @@
 	        return {
 	            data: [],
 	            pageNow:1,
-	            pageCount:''
+	            pageCount:'',
+	            rightState:true,
+	            leftState:false
 	        }
 	    },
 	    getContent:function(page){
@@ -19042,23 +19044,41 @@
 	    leftHandler(){
 	        if(this.state.pageNow-1 > 0){
 	            this.setState({
-	                pageNow : this.state.pageNow-1
+	                pageNow : this.state.pageNow-1,
+	                rightState:true
 	            });
+	            if(this.state.pageNow == 2){
+	                this.setState({
+	                    leftState:false
+	                })
+	            }
 	            this.getContent(this.state.pageNow-1)
 	        }else{
-	            console.error('之前没有数据')
+	            console.error('之前没有数据');
+	            this.setState({
+	                leftState:false
+	            })
 	        }
 	    },
 	    rightHandler(){
 	        if(this.state.pageNow < this.state.pageCount){
 	            this.setState({
-	                pageNow : this.state.pageNow+1
+	                pageNow : this.state.pageNow+1,
+	                leftState:true
 	            });
 	            this.getContent(this.state.pageNow+1);
+	            if(this.state.pageNow == this.state.pageCount-1){
+	                this.setState({
+	                    rightState:false
+	                })
+	            }
 	        }else{
-	            console.error('之后没有数据')
+	            console.error('之后没有数据');
+	            this.setState({
+	                rightState:false
+	            })
 	        }
-	        console.log(this.state.pageNow + 'in rightHandler')
+	        console.log(this.state.rightState + 'in rightHandler')
 	    },
 	    render : function(){
 	        // console.log(this.state.data)
@@ -19074,11 +19094,11 @@
 	                    }), 
 	                
 	                React.createElement("div", null, 
-	                    React.createElement("a", {class: "icon item", onClick: this.leftHandler}, 
+	                    React.createElement("button", {class: "icon item", onClick: this.leftHandler, disabled: !this.state.leftState}, 
 	                          React.createElement("i", {class: "left-arrow"}, " ", '<', " ")
 	                    ), 
 	                    React.createElement("div", {style: {display:'inline-block'}}, this.state.pageNow, "/", this.state.pageCount), 
-	                    React.createElement("a", {class: "icon item", onClick: this.rightHandler}, 
+	                    React.createElement("button", {class: "icon item", onClick: this.rightHandler, disabled: !this.state.rightState}, 
 	                          React.createElement("i", {class: "right-arrow"}, " ", '>', " ")
 	                    )
 	                )
