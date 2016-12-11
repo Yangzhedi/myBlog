@@ -9,7 +9,9 @@ a {
     color: #428bca;
     text-decoration: none;
 }
-
+button[disabled]{
+	cursor: not-allowed;
+}
 /*index.html样式*/
 .navbar{
 	height: 70px;
