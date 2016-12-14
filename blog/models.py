@@ -13,6 +13,13 @@ class BlogsPost(models.Model):
     tag = models.CharField(max_length = 20,default='python')
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('id','title','timestamp','author')
+    list_display = ('title','timestamp','author','id')
+
+    class Media:
+        js = (
+            '/static/js/kindeditor-4.1.10/kindeditor-min.js',
+            '/static/js/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/js/kindeditor-4.1.10/config.js',
+        )
 
 admin.site.register(BlogsPost,BlogPostAdmin)

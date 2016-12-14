@@ -7,9 +7,12 @@
 <body>
 {% extends "base.html" %}
     {% block content %}
-      <h2>{{  post.title }}</h2>
-      <p>{{ post.timestamp | date:"1,F jS"}}</p>
-      <p>{{ post.body }}</p>
+        <h2>{{  post.title }}</h2>
+        <p>{{ post.timestamp | date:"1,F jS"}}</p>
+        {# 富文本显示 #}
+        {% autoescape off %}
+            {{post.body}}
+        {% endautoescape %}
     {% endblock %}
 
 </body>

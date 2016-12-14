@@ -1,9 +1,11 @@
 # myBlog
 一个前端React后端Django的建议blog模版，还在完善中
 
-前端：
+`git clone https://github.com/Yangzhedi/myBlog`
 
-命令行中cd到 `blog/static/js` 下 运行 `npm install` 安装依赖
+在`blog/static/js`中 加入kindeditor富文本编辑器。
+
+`cd blog/static/js` 运行 `npm install` 安装依赖
 
 （如果没有webpack）请`npm install -g webpack` 全局安装webpack 
 

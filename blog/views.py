@@ -25,14 +25,13 @@ def ajax_dict(request):
         'status': 200,
         'result': result
     }
-
     return HttpResponse(json.dumps(postData))
 
 def search_id(request, id):
 #     try:
 #     tm = time.strptime(blog_time.encode(),'%Y-%m-%d %H:%M:%S')
 #     tm = datetime(2016,10,31,04,05)
-    post = BlogsPost.objects.get(id = id)
+    post = BlogsPost.objects.get(id=id)
 #     except BlogsPost.DoesNotExist:
 #         raise Http404('Article does not exists')
     return render(request, 'blog/blog.html', {'post': post})
@@ -55,7 +54,7 @@ def index2(request):
     paginator = Paginator(blog_list, limit)
     page = request.GET.get('page', 1)
     loaded = paginator.page(page)
-    content = {'posts':loaded}
+    content = {'posts': loaded}
     return render_to_response('index2.html',content)
 
 
