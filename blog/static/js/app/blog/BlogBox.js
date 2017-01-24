@@ -8,8 +8,8 @@ var BlogBox = React.createClass({
     },
     //处理tags
     componentWillMount : function(){
-        var tagsArr = []
-        tagsArr = this.props.tag.split(',')
+        var tagsArr = [];
+        tagsArr = this.props.tag.split(',');
         this.setState({
             tags:tagsArr
         })

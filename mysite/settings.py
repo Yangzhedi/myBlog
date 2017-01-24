@@ -25,7 +25,7 @@ SECRET_KEY = '1%8%4@9xx&-05*4i3&_8evrrkt86un9m*h75&7eeoh-*cgd=xs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'yangzhedi.top', u'www.yangzhedi.top']
 
 
 # Application definition

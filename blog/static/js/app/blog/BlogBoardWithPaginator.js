@@ -2,7 +2,7 @@ var React = require("react");
 var BlogBox = require("./BlogBox");
 
 var BlogBoardWithPainator = React.createClass({
-    getInitialState : function(){
+    getInitialState(){
         return {
             data: [],
             pageNow:1,
@@ -11,12 +11,12 @@ var BlogBoardWithPainator = React.createClass({
             leftState:false
         }
     },
-    getContent:function(page){
+    getContent(page){
         var data = {
             page : page
         };
         $.ajax({
-            url:'../API/ajax_page',
+            url:'/API/ajax_page',
             type : "GET",
             data : data,
             success:function(response,stutas,xhr){
@@ -30,7 +30,7 @@ var BlogBoardWithPainator = React.createClass({
             }.bind(this)
         });
     },
-    componentWillMount : function(){
+    componentWillMount(){
         this.getContent(this.state.pageNow);
     },
     leftHandler(){
@@ -72,7 +72,7 @@ var BlogBoardWithPainator = React.createClass({
         }
         console.log(this.state.rightState + 'in rightHandler')
     },
-    render : function(){
+    render(){
         // console.log(this.state.data)
         // console.log(this.state.pageCount)
         return(
