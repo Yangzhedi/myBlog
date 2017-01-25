@@ -19,7 +19,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 # from . import blog.views
-from blog.views import index,hello,main,blog1,index2,ajax_dict,ajax_page,search_id
+from blog.views import index,hello,main,blog1,index2,ajax_dict,ajax_page,search_id,file_download,big_file_download
 
 # url用正则表达式
 urlpatterns = [
@@ -34,5 +34,8 @@ urlpatterns = [
     url(r'^API/ajax_dict/$', ajax_dict),
     url(r'^API/ajax_page/$', ajax_page),
 
-    url(r'^blog/(?P<id>\d+)/$', search_id, name='page')
+    url(r'^blog/(?P<id>\d+)/$', search_id, name='page'),
+
+
+    url(r'^data/1.txt$', big_file_download)
 ]

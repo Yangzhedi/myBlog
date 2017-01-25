@@ -8,6 +8,8 @@ from django.template import loader,Context
 from django.http import HttpResponse
 import time
 from datetime import datetime
+import csv
+from django.http import StreamingHttpResponse
 
 
 def index(request):
@@ -122,3 +124,32 @@ def blog_list2json(blog_list):
         }
         result.append(blog)
     return result
+
+
+# 实验下载功能
+def file_download(request):
+    # do something...
+    with open('data/1.txt') as f:
+        c = f.read()
+    # c = open('data/601939.csv', 'wb')
+    return HttpResponse(c)
+
+
+def big_file_download(request):
+    # do something...
+
+    def file_iterator(file_name, chunk_size=512):
+        with open(file_name) as f:
+            while True:
+                c = f.read(chunk_size)
+                if c:
+                    yield c
+                else:
+                    break
+
+    the_file_name = "data/601939.csv"
+    response = StreamingHttpResponse(file_iterator(the_file_name))
+    response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = 'attachment;filename="{0}"'.format(the_file_name)
+
+    return response
