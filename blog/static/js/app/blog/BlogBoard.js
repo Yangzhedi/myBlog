@@ -35,7 +35,7 @@ var BlogBoard = React.createClass({
                 {
                     this.state.data.map(function(item,index){
                         return(
-                            <BlogBox title={item.title} body={item.body} id={item.id} tag={item.tag}
+                            <BlogBox key={index} title={item.title} body={item.body} id={item.id} tag={item.tag}
                                      author={item.author} timestamp={item.timestamp}/>
                         )
                     })

@@ -76,22 +76,22 @@ var BlogBoardWithPainator = React.createClass({
         // console.log(this.state.data)
         // console.log(this.state.pageCount)
         return(
-            <div>
+            <div className="">
                 {
                     this.state.data.map(function(item,index){
                         return(
-                            <BlogBox title={item.title} body={item.body} id={item.id} tag={item.tag}
+                            <BlogBox key={index} title={item.title} body={item.body} id={item.id} tag={item.tag}
                                      author={item.author} timestamp={item.timestamp}/>
                         )
                     })
                 }
                 <div>
-                    <button class="icon item" onClick={this.leftHandler} disabled={!this.state.leftState}>
-                          <i class="left-arrow"> {'<'} </i>
+                    <button className="icon item" onClick={this.leftHandler} disabled={!this.state.leftState}>
+                          <i className="left-arrow"> {'<'} </i>
                     </button>
                     <div style={{display:'inline-block'}}>{this.state.pageNow}/{this.state.pageCount}</div>
-                    <button class="icon item" onClick={this.rightHandler} disabled={!this.state.rightState}>
-                          <i class="right-arrow"> {'>'} </i>
+                    <button className="icon item" onClick={this.rightHandler} disabled={!this.state.rightState}>
+                          <i className="right-arrow"> {'>'} </i>
                     </button>
                 </div>
             </div>
