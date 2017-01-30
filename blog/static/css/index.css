@@ -1,6 +1,7 @@
 body {
-	margin-top: 100px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
+	margin-top: 0; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
 	font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    /*background: #f5f2f0;*/
 }
 footer {
 	margin: 50px 0;
@@ -11,6 +12,30 @@ a {
 }
 button[disabled]{
 	cursor: not-allowed;
+}
+.route-li{
+	font-size: 25px;
+	display: inline-block;
+    margin-right: 30px;
+	line-height: 70px;
+}
+.route-li.first{
+    margin-left: 15%;
+}
+/*.route-ul :first-child{
+    margin-left: 15%;
+}*/
+.route-li a{
+    color:#f5dd5d;
+    text-decoration: none;
+}
+.route-li a:hover{
+    color:#f5f2f0;
+}
+.route-ul{
+    height: 70px;
+    background-color: #417690;
+    width: 100%;
 }
 /*index.html样式*/
 .navbar{
@@ -31,11 +56,31 @@ button[disabled]{
 	background-color: #5bc0de;
 }
 
+.app-container{
+
+}
+.context-container{
+    width:60%;
+	margin: 0 auto 100px;
+}
+.foot-container{
+	width:60%;
+	margin: 0 auto;
+}
+
+
+
 
 /*BlogBox style is here*/
+.blog-container{
+	width:60%;
+	margin: 0 auto 100px;
+}
+
 .blog-box{
 	width: 100%;
 	margin-bottom:70px;
+    position: relative;
 }
 .blog-box p{
 	width: 90%;
@@ -61,8 +106,15 @@ button[disabled]{
 	padding: 5px;
 	border-radius: 4px;
 }
-
-
+.blog-list{
+	min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+}
+.blog-list p{word-break:break-all;}
 
 /*index2样式*/
 .left-arrow,.right-arrow{

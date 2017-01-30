@@ -24,7 +24,7 @@ const App = React.createClass({
             <div className="app-container">
             {/* 把 <a> 变成 <Link> */}
                 <ul className="route-ul">
-                    <li className="route-li"><Link to="/">首页</Link></li>
+                    <li className="route-li first"><Link to="/">首页</Link></li>
                     <li className="route-li"><Link to="/blog">我的博客</Link></li>
                     <li className="route-li"><Link to="/chart">待定</Link></li>
                 </ul>
@@ -35,6 +35,11 @@ const App = React.createClass({
              */}
                 <div className="context-container">
                     {this.props.children}
+                </div>
+                <div className="foot-container">
+                    <span>京ICP备16065700号-1</span>
+                    <span>丨</span>
+                    <span>Copyright © 2016-2017, yangzhedi.top , All Rights Reserved</span>
                 </div>
             </div>
         )

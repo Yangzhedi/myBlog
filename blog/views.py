@@ -150,6 +150,6 @@ def big_file_download(request):
     the_file_name = "data/601939.csv"
     response = StreamingHttpResponse(file_iterator(the_file_name))
     response['Content-Type'] = 'application/octet-stream'
-    response['Content-Disposition'] = 'attachment;filename="{0}"'.format(the_file_name)
+    response['Content-Disposition'] = 'attachment;filename="{0}"'.format(the_file_name.split('/')[1])
 
     return response
