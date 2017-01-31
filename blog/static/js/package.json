@@ -28,7 +28,6 @@
     "babel-preset-stage-2": "^6.3.13",
     "jsx-loader": "^0.12.2",
     "uglify-loader": "^1.4.0",
-    "webpack": "^1.12.9",
-    "webpack-uglify-js-plugin": "^1.1.9"
+    "webpack": "^1.12.9"
   }
 }

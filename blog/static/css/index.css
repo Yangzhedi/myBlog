@@ -123,3 +123,14 @@ button[disabled]{
 .paginator-nums{
 	display:inline-block;
 }
+
+/*股票样式*/
+.stock-link{
+	display: none;
+}
+.stock-link.show{
+	display: block;
+}
+.spider-button{
+	/*display: block;*/
+}

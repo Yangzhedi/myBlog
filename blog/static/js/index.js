@@ -12,7 +12,7 @@ var ReactDOM = require('react-dom');
 // 首先我们需要导入一些组件...
 import { Router, Route, Link, browserHistory, hashHistory, IndexRoute  } from 'react-router'
 import BlogBoard from './app/blog/BlogBoard';
-import Chart from './app/spider/chart';
+import StockSpider from './app/spider/StockSpider';
 import BlogBoardWithPaginator from './app/blog/BlogBoardWithPaginator';
 import Home from './app/home';
 
@@ -26,7 +26,8 @@ const App = React.createClass({
                 <ul className="route-ul">
                     <li className="route-li first"><Link to="/">首页</Link></li>
                     <li className="route-li"><Link to="/blog">我的博客</Link></li>
-                    <li className="route-li"><Link to="/chart">待定</Link></li>
+                    <li className="route-li"><Link to="/stock-spider">股票数据下载</Link></li>
+                    <li className="route-li"><Link to="/">待定</Link></li>
                 </ul>
 
             {/*
@@ -51,11 +52,9 @@ const App = React.createClass({
 ReactDOM.render((
     <Router  history={hashHistory }>
         <Route path="/" component={App}>
-            {/*  <IndexRoute component={BlogBoardWithPaginator} /> */}
             <IndexRoute component={Home} />
             <Route path="blog" component={BlogBoardWithPaginator} />
-            <Route path="chart" component={Chart} />
+            <Route path="stock-spider" component={StockSpider} />
         </Route>
-
     </Router>
-), document.body);
+), document.getElementById("app"));

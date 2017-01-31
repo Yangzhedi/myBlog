@@ -20,7 +20,7 @@ var BlogBoardWithPainator = React.createClass({
             type : "GET",
             data : data,
             success:function(response,stutas,xhr){
-                console.log(JSON.parse(response));
+                // console.log(JSON.parse(response));
                 var responseData = JSON.parse(response);
                 this.setState({
                     data:responseData.page.page_result,

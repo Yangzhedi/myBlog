@@ -1,6 +1,7 @@
 var webpack = require('webpack');
-var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+// var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 module.exports = {
+    devtool: false,
     entry : {
         index : "./index.js"
     },
