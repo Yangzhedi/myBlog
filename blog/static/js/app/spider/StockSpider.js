@@ -33,48 +33,57 @@ class StockSpider extends Component{
     handleChange(e){
         // console.log(e.target.value);
         this.setState({
-            value: e.target.value
+            // 去除空格
+            value: e.target.value.replace(/\s/g, "")
         })
     }
 
     handleClick(e){
         // console.log(e.target);
-        var data = {
-            value: this.state.value
-        };
-        $.ajax({
-            url:'/API/stock-code-search',
-            type : "GET",
-            data : data,
-            success:function(response,stutas,xhr){
-                // console.log('response is ');
-                // console.log(response);
-                this.setState({
-                    linkContent: response
-                })
-            }.bind(this)
-        });
-
         this.setState({
-            linkIsShow: true
-        })
+            linkContent: ''
+        });
+        if(this.state.value.length == 6){
+            var data = {
+                value: this.state.value
+            };
+            $.ajax({
+                url:'/API/stock-code-search',
+                type : "GET",
+                data : data,
+                success:function(response,stutas,xhr){
+                    // console.log('response is ');
+                    // console.log(response);
+                    this.setState({
+                        linkContent: 'Download'+response+'.csv',
+                        linkIsShow: true
+                    })
+                }.bind(this)
+            });
+        }
+
+    }
+
+    componentWillMount(){
+        console.error('还在开发中，如果想用，请输入正确的6位股票代码。')
     }
 
     render() {
         var stockLink = "stock-link";
-        if(this.state.linkIsShow){
+        if(this.state.linkContent){
             stockLink+="show";
         }
         var downloadHref = '/data/'+this.state.value;
         return(
             <div>
                 <div>
+                    <p style={{fontSize:10,color:'#e42b2b'}}>*还在开发中，input过滤还不是很完善，如果想用，请输入正确的6位股票代码。</p>
                     <input type="text" value={this.state.value}
                        onChange={this.handleChange}/>
                     <button className='spider-button' disabled={!this.state.value}
                             onClick={this.handleClick}>开始爬取</button>
                 </div>
-                <a className={stockLink} href={downloadHref}>{'Download'+this.state.linkContent+'.csv'}</a>
+                <a className={stockLink} href={downloadHref}>{this.state.linkContent}</a>
             </div>
         );
     }

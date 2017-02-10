@@ -1,7 +1,15 @@
-var React = require("react");
+import React, {Component} from 'react';
 
-var BlogHeader = React.createClass({
-    render : function(){
+
+class BlogHeader extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            
+        };
+    };
+    render(){
         return(
             <div className="blog-header">
                 11111111
@@ -16,6 +24,7 @@ var BlogHeader = React.createClass({
             </div>
         )
     }
-});
+    
+}
 
 module.exports = BlogHeader;

@@ -1,21 +1,25 @@
-var React = require("react");
+import React, {Component} from 'react';
 
-var BlogBox = React.createClass({
-    getInitialState : function(){
-        return {
+
+class BlogBox extends Component {
+    
+    constructor(props){
+        super(props);
+
+        this.state = {
             tags: []
-        }
-    },
+        };
+    };
+    
     //处理tags
-    componentWillMount : function(){
+    componentWillMount(){
         var tagsArr = [];
         tagsArr = this.props.tag.split(',');
         this.setState({
             tags:tagsArr
         })
-    },
-
-    render:function(){
+    }
+    render(){
         var aHref = '../blog/'+this.props.id;
         return(
             <div className="blog-box">
@@ -33,6 +37,5 @@ var BlogBox = React.createClass({
             </div>
         )
     }
-});
-
+}
 module.exports = BlogBox;

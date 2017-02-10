@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response
 from django.template import loader,Context
 from django.http import HttpResponse
 import time
-from datetime import datetime
+import os
 import csv
 from django.http import StreamingHttpResponse
 from spider.stockSpider import sharesCrawl
@@ -36,8 +36,16 @@ def stock_code_search(request):
     print request.GET["value"]
     code = request.GET["value"]
     if(len(code) == 6):
-        sharesCrawl(code,2017,1)
         print 'success'
+        # print os.listdir('data')
+        token = False
+        for filecode in os.listdir('data'):
+            if code+'.csv' == filecode:
+                token =True
+                print '已经有了这个文件，我就不爬了'
+        if token == False:
+            print '还没有这个文件，我就爬了下'
+            sharesCrawl(code, 2017, 1)
         return HttpResponse({code})
     else:
         return HttpResponse({'fail':1222})

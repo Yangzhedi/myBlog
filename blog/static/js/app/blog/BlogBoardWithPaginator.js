@@ -1,16 +1,23 @@
-var React = require("react");
-var BlogBox = require("./BlogBox");
+import React, {Component} from 'react';
+import BlogBox from "./BlogBox";
 
-var BlogBoardWithPainator = React.createClass({
-    getInitialState(){
-        return {
+
+class BlogBoardWithPainator extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
             data: [],
             pageNow:1,
             pageCount:'',
             rightState:true,
             leftState:false
-        }
-    },
+        };
+
+        this.rightHandler = this.rightHandler.bind(this);
+        this.leftHandler = this.leftHandler.bind(this);
+    };
+
     getContent(page){
         var data = {
             page : page
@@ -29,10 +36,10 @@ var BlogBoardWithPainator = React.createClass({
 
             }.bind(this)
         });
-    },
+    }
     componentWillMount(){
         this.getContent(this.state.pageNow);
-    },
+    }
     leftHandler(){
         if(this.state.pageNow-1 > 0){
             this.setState({
@@ -51,7 +58,7 @@ var BlogBoardWithPainator = React.createClass({
                 leftState:false
             })
         }
-    },
+    }
     rightHandler(){
         if(this.state.pageNow < this.state.pageCount){
             this.setState({
@@ -71,7 +78,7 @@ var BlogBoardWithPainator = React.createClass({
             })
         }
         console.log(this.state.rightState + 'in rightHandler')
-    },
+    }
     render(){
         // console.log(this.state.data)
         // console.log(this.state.pageCount)
@@ -111,6 +118,8 @@ var BlogBoardWithPainator = React.createClass({
             </div>
         )
     }
-});
+
+}
+
 
 module.exports = BlogBoardWithPainator;

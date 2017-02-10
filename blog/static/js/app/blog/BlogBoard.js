@@ -1,13 +1,18 @@
-var React = require("react");
-var BlogBox = require("./BlogBox");
+import React, {Component} from 'react';
+import BlogBox from "./BlogBox";
 
-var BlogBoard = React.createClass({
-    getInitialState : function(){
-        return {
+
+class BlogBoard extends Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
             data: []
-        }
-    },
-    getContent:function(){
+        };
+        
+    };
+
+    getContent(){
         var data = {
             page : 1
         };
@@ -24,12 +29,12 @@ var BlogBoard = React.createClass({
 
             }.bind(this)
         });
-    },
-    componentWillMount : function(){
+    }
+    componentWillMount(){
         this.getContent();
-    },
-    render : function(){
-        console.log(this.state.data)
+    }
+    render(){
+        console.log(this.state.data);
         return(
             <div>
                 {
@@ -43,6 +48,7 @@ var BlogBoard = React.createClass({
             </div>
         )
     }
-});
+}
+
 
 module.exports = BlogBoard;
