@@ -18,12 +18,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8" id="blog-container">
-
+                {% load djangomarkdown %}
                 {% for post in posts %}
                     <div class="blog-box">
                         <h2 className="item-head"><a href='/blog/{{  post.id }}'>{{  post.title }}</a></h2>
                         <p>{{ post.timestamp | date:"1,F jS"}} By {{ post.author}}</p>
-                        <p>{{ post.body | truncatewords:"50" }}</p>
+                        <p>{{ post.body | truncatewords:"50" | djangomarkdown  }}</p>
                         <span><a href='/blog/{{  post.id }}'> 阅读全文 >> </a></span>
                         <hr style="border:1px dashed #929292; width:70%;height:1px;position:absolute"/>
                     </div>
@@ -59,7 +59,10 @@
                 </div>
             </div>
         </div>
-
+<iframe id="mdEditor" style="width: 100%"
+        ng-src="/md/preview/preview.html?file=%2Fyws%2Fapi%2Fpersonal%2Ffile%2F0A9C5E7AEB0841C08393779A4FAD1538%3Fmethod%3Ddownload%26read%3Dtrue"
+        widget-iframe-onload=""
+        src="https://note.youdao.com/md/preview/preview.html?file=%2Fyws%2Fapi%2Fpersonal%2Ffile%2F0A9C5E7AEB0841C08393779A4FAD1538%3Fmethod%3Ddownload%26read%3Dtrue"></iframe>
         <footer>
             <div class="row">
                 <div class="col-lg-12">
