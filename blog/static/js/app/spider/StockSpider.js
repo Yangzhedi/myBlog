@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import stockCode from './stockCode'
 /*
 let Chart = React.createClass({
     handleChange(){
@@ -23,11 +24,14 @@ class StockSpider extends Component{
         this.state = {
             value: '',
             linkIsShow: false,
-            linkContent: ''
+            linkContent: '',
+            arr: []
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+
     };
 
     handleChange(e){
@@ -64,6 +68,20 @@ class StockSpider extends Component{
 
     }
 
+    handleSearch(){
+        // console.log(stockCode.allSHcode)
+        var this_ = this;
+        var bool = false;
+        var idx = 0;
+        stockCode.allSHcode.forEach(function(item,index) {
+            if(item == this_.state.value){
+                bool = true;
+                idx = index;
+            }
+        });
+        console.log(stockCode.allSHcodeWithName[idx])
+    }
+
     componentWillMount(){
         console.error('还在开发中，如果想用，请输入正确的6位股票代码。')
     }
@@ -78,8 +96,15 @@ class StockSpider extends Component{
             <div>
                 <div>
                     <p style={{fontSize:10,color:'#e42b2b'}}>*还在开发中，input过滤还不是很完善，如果想用，请输入正确的6位股票代码。</p>
+                    {
+                        this.state.arr.map(function (item, index) {
+                            return <span key={index}>{'\''+item+'\','}</span>
+                        })
+                    }
                     <input type="text" value={this.state.value}
                        onChange={this.handleChange}/>
+                    <button className='spider-button'
+                            onClick={this.handleSearch}>验证</button>
                     <button className='spider-button' disabled={!this.state.value}
                             onClick={this.handleClick}>开始爬取</button>
                 </div>

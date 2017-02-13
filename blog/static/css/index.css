@@ -137,7 +137,7 @@ button[disabled]{
 
 
 /*code*/
-code,pre{
+pre code{
     color: black;
     text-shadow: 0 1px white;
     font-family: Consolas, Monaco, 'Andale Mono', monospace;
@@ -155,8 +155,30 @@ code,pre{
     hyphens: none;
 }
 pre{
-	background-color: #f5f5d5;
+	background-color: #f7f7f9;
     padding: 30px;
-    border: 3px solid;
+    border: 2px solid;
     border-radius: 13px;
+}
+p code, li code{
+    padding: 2px 4px;
+    color: #d14;
+    white-space: nowrap;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    border-radius: 5px;
+	text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    font-size: 1.1em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
 }
