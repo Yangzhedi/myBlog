@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response
 from django.template import loader,Context
 from django.http import HttpResponse
 import time
-from datetime import datetime
+from markdown import markdown
 import csv
 from django.http import StreamingHttpResponse
 
@@ -53,6 +53,8 @@ def ajax_time(request):
 def index2(request):
     limit = 5
     blog_list = BlogsPost.objects.all()
+    # for blog_item in blog_list:
+    #     blog_item.body = markdown(blog_item.body)
     paginator = Paginator(blog_list, limit)
     page = request.GET.get('page', 1)
     loaded = paginator.page(page)

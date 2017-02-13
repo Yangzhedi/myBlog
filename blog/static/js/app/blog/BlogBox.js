@@ -19,6 +19,13 @@ class BlogBox extends Component {
             tags:tagsArr
         })
     }
+    componentWillReceiveProps(nextProps){
+        var tagsArr = [];
+        tagsArr = nextProps.tag.split(',');
+        this.setState({
+            tags:tagsArr
+        })
+    }
     render(){
         var aHref = '../blog/'+this.props.id;
         return(
@@ -32,7 +39,7 @@ class BlogBox extends Component {
                 }
                 {/*<span className="blog-tag">{this.props.tag}</span>*/}
                 <p>{this.props.body.toString().replace(/<\/?[^>]*>/g,'').slice(0,100)}... </p>
-                <span><a href={aHref} target="_blank"> 阅读全文123 {'>>'} {this.props.id}</a></span>
+                <span><a href={aHref} target="_blank"> 阅读全文 {'>>'}</a></span>
                 <hr style={{border:'1px dashed #929292', width:'70%',height:1,position:'absolute'}}/>
             </div>
         )
