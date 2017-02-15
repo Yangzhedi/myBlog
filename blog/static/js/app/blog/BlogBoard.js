@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import BlogBox from "./BlogBox";
-
+'use strict';
 
 class BlogBoard extends Component{
     constructor(props){
@@ -16,19 +16,19 @@ class BlogBoard extends Component{
         var data = {
             page : 1
         };
-        $.ajax({
-            url:'../API/ajax_dict',
-            type : "GET",
-            data : data,
-            success:function(response,stutas,xhr){
-                console.log(JSON.parse(response));
-                var responseData = JSON.parse(response);
-                this.setState({
-                   data:responseData.result
-                });
-
-            }.bind(this)
-        });
+        // $.ajax({
+        //     url:'../API/ajax_dict',
+        //     type : "GET",
+        //     data : data,
+        //     success:function(response,stutas,xhr){
+        //         console.log(JSON.parse(response));
+        //         var responseData = JSON.parse(response);
+        //         this.setState({
+        //            data:responseData.result
+        //         });
+        //
+        //     }.bind(this)
+        // });
     }
     componentWillMount(){
         this.getContent();

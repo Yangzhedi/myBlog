@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import BlogBox from "./BlogBox";
+import AjaxFunction from '../util/AjaxFunction'
 
-
+'use strict';
 class BlogBoardWithPainator extends Component {
     constructor(props){
         super(props);
@@ -22,20 +23,45 @@ class BlogBoardWithPainator extends Component {
         var data = {
             page : page
         };
-        $.ajax({
+        // $.ajax({
+        //     url:'/API/ajax_page',
+        //     type : "GET",
+        //     data : data,
+        //     success:function(response,stutas,xhr){
+        //         // console.log(JSON.parse(response));
+        //         var responseData = JSON.parse(response);
+        //         this.setState({
+        //             data:responseData.page.page_result,
+        //             pageCount:responseData.page.count
+        //         });
+        //
+        //     }.bind(this)
+        // });
+        
+        AjaxFunction.ajax({
             url:'/API/ajax_page',
             type : "GET",
             data : data,
             success:function(response,stutas,xhr){
                 // console.log(JSON.parse(response));
+                console.log('原生ajax');
                 var responseData = JSON.parse(response);
                 this.setState({
                     data:responseData.page.page_result,
                     pageCount:responseData.page.count
                 });
-
             }.bind(this)
         });
+        // fetch('../API/ajax_dict').then(function(res) {
+        //     if (res.ok) {
+        //         console.log(res.body);
+        //         // res.json().then(function(obj) {
+        //         //     // 这样数据就转换成json格式的了
+        //         // })
+        //     }
+        // }, function(ex) {
+        //     console.log(ex)
+        // })
     }
     componentWillMount(){
         this.getContent(this.state.pageNow);

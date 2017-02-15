@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+'use strict';
 
 class BlogBox extends Component {
     
@@ -38,7 +38,7 @@ class BlogBox extends Component {
                     })
                 }
                 {/*<span className="blog-tag">{this.props.tag}</span>*/}
-                <p>{this.props.body.toString().replace(/<\/?[^>]*>/g,'').slice(0,100)}... </p>
+                <p>{this.props.body.toString().replace(/\#*\=*\`*/g,'').slice(0,300)}... </p>
                 <span><a href={aHref} target="_blank"> 阅读全文 {'>>'}</a></span>
                 <hr style={{border:'1px dashed #929292', width:'70%',height:1,position:'absolute'}}/>
             </div>

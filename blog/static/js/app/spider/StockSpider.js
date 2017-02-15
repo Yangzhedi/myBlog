@@ -1,22 +1,7 @@
 import React, {Component} from 'react';
 import stockCode from './stockCode'
-/*
-let Chart = React.createClass({
-    handleChange(){
-        
-    },
-    render() {
-        return(
-            <div>
-                即将推出股票数据打包下载功能，敬请期待。。。
-                <a href="/data/1.txt">HAVE A TRY !!!</a>
-                <input type="text" onChange={this.handleChange}/>
-            </div>
-        );
-    }
-});
-
-export default Chart;  */
+import SideBar from './SideBar'
+'use strict';
 class StockSpider extends Component{
     constructor(props){
         super(props);
@@ -35,10 +20,10 @@ class StockSpider extends Component{
     };
 
     handleChange(e){
-        // console.log(e.target.value);
+        console.log(e.target.value);
         this.setState({
             // 去除空格
-            value: e.target.value.replace(/\s/g, "")
+            value: e.target.value.replace(/\s/g, "").slice(0,6)
         })
     }
 
@@ -83,7 +68,7 @@ class StockSpider extends Component{
     }
 
     componentWillMount(){
-        console.error('还在开发中，如果想用，请输入正确的6位股票代码。')
+        console.warn('还在开发中，如果想用，请输入正确的6位股票代码。')
     }
 
     render() {
@@ -93,23 +78,36 @@ class StockSpider extends Component{
         }
         var downloadHref = '/data/'+this.state.value;
         return(
-            <div>
-                <div>
-                    <p style={{fontSize:10,color:'#e42b2b'}}>*还在开发中，input过滤还不是很完善，如果想用，请输入正确的6位股票代码。</p>
-                    {
-                        this.state.arr.map(function (item, index) {
-                            return <span key={index}>{'\''+item+'\','}</span>
-                        })
-                    }
-                    <input type="text" value={this.state.value}
-                       onChange={this.handleChange}/>
-                    <button className='spider-button'
-                            onClick={this.handleSearch}>验证</button>
-                    <button className='spider-button' disabled={!this.state.value}
-                            onClick={this.handleClick}>开始爬取</button>
+            <div className="row">
+                <div className="col-lg-8">
+                    <div>
+                        <p style={{fontSize:10,color:'#e42b2b'}}>*还在开发中，input过滤还不是很完善，如果想用，请输入正确的6位股票代码。</p>
+                        {
+                            this.state.arr.map(function (item, index) {
+                                return <span key={index}>{'\''+item+'\','}</span>
+                            })
+                        }
+                        <input type="text" value={this.state.value}
+                           onChange={this.handleChange}/>
+                        <button className='spider-button btn-4'
+                                onClick={this.handleSearch}>验证</button>
+                        <button className='spider-button' disabled={!this.state.value}
+                                onClick={this.handleClick}>开始爬取</button>
+                    </div>
+
+                    <div className="loading">
+                        <p>正在查询股票代码</p>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <a className={stockLink} href={downloadHref}>{this.state.linkContent}</a>
                 </div>
-                <a className={stockLink} href={downloadHref}>{this.state.linkContent}</a>
+                <SideBar/>
             </div>
+
         );
     }
 }

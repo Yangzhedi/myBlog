@@ -25,8 +25,8 @@ const App = React.createClass({
             {/* 把 <a> 变成 <Link> */}
                 <ul className="route-ul">
                     <li className="route-li first"><Link to="/">首页</Link></li>
-                    <li className="route-li"><Link to="/blog">我的博客</Link></li>
-                    <li className="route-li"><Link to="/stock-spider">股票数据下载</Link></li>
+                    <li className="route-li"><Link to="/blog">博客</Link></li>
+                    <li className="route-li"><Link to="/stock-spider">数据</Link></li>
                     <li className="route-li"><Link to="/">待定</Link></li>
                 </ul>
 

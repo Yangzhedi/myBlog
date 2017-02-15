@@ -10,6 +10,9 @@ a {
     color: #428bca;
     text-decoration: none;
 }
+a:hover{
+    text-decoration: none;
+}
 button[disabled]{
 	cursor: not-allowed;
 }

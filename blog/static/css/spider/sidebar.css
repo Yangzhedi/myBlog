@@ -1,0 +1,9 @@
+.side-bar{
+	min-height: 150px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+}
+.side-bar p{word-break:break-all;}
