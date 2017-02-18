@@ -8,7 +8,7 @@ footer {
 }
 a {
     color: #428bca;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 a:hover{
     text-decoration: none;
@@ -91,13 +91,15 @@ button[disabled]{
 }
 .blog-box h2 a{
 	color:#428bca;
+    text-decoration: none;
 }
 .blog-box h2 a:hover{
 	color:#417690;
+    text-decoration: none;
 }
 .blog-box span a{
 	color:black;
-	text-decoration: underline;
+	text-decoration: none;
 }
 .blog-box span a:hover{
 	color:#428bca;
@@ -119,6 +121,31 @@ button[disabled]{
 }
 .blog-list p{word-break:break-all;}
 
+.item-head .ico{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin: 0 2px 0 0;
+}
+
+.item-head .ico-Original {
+    background-image: url(../imgs/skin-type-icon.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    vertical-align: middle;
+}
+.item-head .ico-Repost {
+    background-image: url(../imgs/skin-type-icon.png);
+    background-repeat: no-repeat;
+    background-position: -50px 0px;
+    vertical-align: middle;
+}
+.item-head .ico-Translate {
+    background-image: url(../imgs/skin-type-icon.png);
+    background-repeat: no-repeat;
+    background-position: -25px 0;
+    vertical-align: middle;
+}
 /*index2样式*/
 .left-arrow,.right-arrow{
 	color:red;

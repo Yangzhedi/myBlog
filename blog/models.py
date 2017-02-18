@@ -1,3 +1,4 @@
+# coding:utf-8
 from __future__ import unicode_literals
 
 from django.db import models
@@ -11,6 +12,7 @@ class BlogsPost(models.Model):
     timestamp = models.DateTimeField()
     blog_id = models.IntegerField(default=0)
     tag = models.CharField(max_length=20, default='python')
+    classification = models.CharField(max_length=10, default=u'原创')
 
 class BlogPostAdmin(admin.ModelAdmin):
     list_display = ('title', 'timestamp', 'author', 'id')

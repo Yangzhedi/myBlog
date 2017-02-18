@@ -123,6 +123,7 @@ def blog_list2json(blog_list):
             "author": value.author,
             "timestamp": value.timestamp.strftime('%Y-%m-%d'),
             "tag": value.tag,
+            "classification": value.classification
         }
         result.append(blog)
     return result

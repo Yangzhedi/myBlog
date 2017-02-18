@@ -28,9 +28,24 @@ class BlogBox extends Component {
     }
     render(){
         var aHref = '../blog/'+this.props.id;
+        var clsName = "ico ico-";
+        switch (this.props.classification ){
+            case '原创':
+                clsName += 'Original';
+                break;
+            case '转载':
+                clsName += 'Repost';
+                break;
+            case '翻译':
+                clsName += 'Translate';
+        }
+           
         return(
             <div className="blog-box">
-                <h2 className="item-head"><a href={aHref} target="_blank">{this.props.title}</a></h2>
+                <h2 className="item-head">
+                    <span className={clsName}> </span>
+                    <a href={aHref} target="_blank">{this.props.title}</a>
+                </h2>
                 <p> {this.props.timestamp} By {this.props.author}</p>
                 {
                     this.state.tags.map(function(item, index){

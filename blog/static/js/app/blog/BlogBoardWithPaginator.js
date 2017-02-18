@@ -106,7 +106,7 @@ class BlogBoardWithPainator extends Component {
         console.log(this.state.rightState + 'in rightHandler')
     }
     render(){
-        // console.log(this.state.data)
+        console.log(this.state.data);
         // console.log(this.state.pageCount)
         return(
             <div className="row">
@@ -115,7 +115,7 @@ class BlogBoardWithPainator extends Component {
                         this.state.data.map(function(item,index){
                             return(
                                 <BlogBox key={index} title={item.title} body={item.body} id={item.id} tag={item.tag}
-                                         author={item.author} timestamp={item.timestamp}/>
+                                         author={item.author} classification={item.classification} timestamp={item.timestamp}/>
                             )
                         })
                     }
