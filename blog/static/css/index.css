@@ -16,6 +16,23 @@ a:hover{
 button[disabled]{
 	cursor: not-allowed;
 }
+.hidden {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
 .route-li{
 	font-size: 25px;
 	display: inline-block;

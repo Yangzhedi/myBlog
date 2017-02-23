@@ -1,8 +1,8 @@
 .loading{
-    width: 150px;
+    /*width: 150px;*/
     height: 15px;
     margin: 0 auto;
-    margin-top:100px;
+    margin-bottom:100px;
 }
 .loading span{
     display: inline-block;
