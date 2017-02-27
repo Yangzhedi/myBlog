@@ -12,6 +12,16 @@ import csv
 from django.http import StreamingHttpResponse
 from spider.stockSpider import sharesCrawl
 
+# 实验下载功能
+def file_download(request,code):
+    with open("data/"+code+".csv") as f:
+        c = f.read()
+
+    # csvFile = open('data/900939.csv', 'wb')
+    # c = open('data/601939.csv', 'wb')
+    return HttpResponse(c)
+
+
 # 股票文件下载
 def big_file_download(request,code):
     # do something...
@@ -32,6 +42,7 @@ def big_file_download(request,code):
 
     return response
 
+# 股票代码查询功能
 def stock_code_search(request):
     print request.GET["value"]
     code = request.GET["value"]

@@ -7,3 +7,13 @@
     border-radius: 4px;
 }
 .side-bar p{word-break:break-all;}
+
+/*去掉 number input的上下箭头*/
+input[type=number] {
+    -moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

@@ -27,7 +27,11 @@ def ajax_dict(request):
         'status': 200,
         'result': result
     }
-    return HttpResponse(json.dumps(postData))
+    response = HttpResponse(json.dumps(postData))
+    # response.__setitem__('Access-Control-Allow-Origin', '*')
+    response['Access-Control-Allow-Origin'] = 'chrome-extension://cnfpcdmnndiiahhjlononjoefnnchjnp'
+    return response
+
 
 def search_id(request, id):
 #     try:
@@ -48,8 +52,6 @@ def ajax_time(request):
     return HttpResponse(json.dumps({"time":time_list}))
 
 
-
-
 def index2(request):
     limit = 5
     blog_list = BlogsPost.objects.all()
@@ -68,8 +70,10 @@ def main(request):
         'List': json.dumps(list),
     })
 
+
 def hello(request):
     return HttpResponse("Hello world")
+
 
 def blog1(request):
     blog_list = BlogsPost.objects.all();
@@ -113,6 +117,24 @@ def ajax_page(request):
     return HttpResponse(json.dumps(postData))
 
 
+def ajax_crx(request):
+    blog_list = BlogsPost.objects.filter(timestamp__contains="2016-12")
+    print blog_list[1].timestamp
+    # paginator = Paginator(blog_list, 5)
+    # result = blog_list2json(paginator.page(1).object_list)
+    result = blog_list2json(blog_list)
+    # sorted(result, key=lambda student: student['timestamp'])
+    postData = {
+        'status': 200,
+        'result': result
+    }
+    response = HttpResponse(json.dumps(postData))
+    # response.__setitem__('Access-Control-Allow-Origin', '*')
+    response['Access-Control-Allow-Origin'] = 'chrome-extension://cnfpcdmnndiiahhjlononjoefnnchjnp'
+    return response
+
+
+
 def blog_list2json(blog_list):
     result = []
     for i, value in enumerate(blog_list):
@@ -128,14 +150,6 @@ def blog_list2json(blog_list):
         result.append(blog)
     return result
 
-
-# 实验下载功能
-def file_download(request):
-    # do something...
-    with open('data/1.txt') as f:
-        c = f.read()
-    # c = open('data/601939.csv', 'wb')
-    return HttpResponse(c)
 
 
 def big_file_download(request):

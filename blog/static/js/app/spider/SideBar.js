@@ -15,11 +15,7 @@ class SideBar extends Component{
             <div className="col-lg-4">
                 <div className="side-bar">
                     <h4>About This</h4>
-                    <p>这是功能可以提供股票数据下载。</p>
-                </div>
-                <div className="side-bar">
-                    <h4>诚征AD</h4>
-                    <span>联系邮箱：uiryzd@163.com</span>
+                    <p>这个功能可以在线帮助您爬取股票的数据并提供下载。</p>
                 </div>
                 <div className="side-bar">
                     <h4>诚征AD</h4>

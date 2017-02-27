@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import stockCode from './stockCode'
 import SideBar from './SideBar'
 import AjaxFunction from '../util/AjaxFunction'
+//这页代码写的太丑了，挑个时间好好重构下，不过现在倒是没有bug。
 'use strict';
 
 var linkLoading = false;
+var bool = false;
 class StockSpider extends Component{
     constructor(props){
         super(props);
@@ -14,7 +16,8 @@ class StockSpider extends Component{
             linkIsShow: false,
             linkContent: '',
             stockContent:'',
-            arr: []
+            arr: [],
+            allSZcode:[]
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -26,8 +29,9 @@ class StockSpider extends Component{
 
     handleChange(e){
         // console.log(e.target.value);
+        bool = false;
         this.setState({
-            // 去除空格
+            // 去除空格，并只保留6位
             value: e.target.value.replace(/\s/g, "").slice(0,6)
         })
     }
@@ -35,16 +39,15 @@ class StockSpider extends Component{
     handleClick(e){
         // console.log(e.target);
         var this_ = this;
-        var bool = false;
         var idx = null;
-        stockCode.allSHcode.forEach(function(item,index) {
+        bool = true;
+        stockCode.allCode.forEach(function(item,index) {
             if(item == this_.state.value){
-                bool = true;
                 idx = index;
             }
         });
         this.setState({
-            stockContent:stockCode.allSHcodeWithName[idx]
+            stockContent:stockCode.allCodeWithName[idx]
         });
         if(idx !== null){
             linkLoading = true;
@@ -70,9 +73,11 @@ class StockSpider extends Component{
                     }.bind(this)
                 });
             }
+        }else{
+            
         }
         console.log(idx);
-        console.log(stockCode.allSHcodeWithName[idx])
+        console.log(stockCode.allCodeWithName[idx])
 
 
     }
@@ -82,7 +87,8 @@ class StockSpider extends Component{
     }
 
     componentWillMount(){
-        console.warn('还在开发中，如果想用，请输入正确的6位股票代码。')
+        // console.warn('还在开发中，如果想用，请输入正确的6位股票代码。')
+        // console.log(stockLoading);
     }
 
     render() {
@@ -93,13 +99,12 @@ class StockSpider extends Component{
             stockLink += "show";
             stockLoading = 'hidden';
         }
-        console.log(stockLoading);
         var downloadHref = '/data/'+this.state.value;
         return(
             <div className="row">
                 <div className="col-lg-8">
                     <div>
-                        <p style={{fontSize:10,color:'#e42b2b'}}>*还在开发中，input过滤还不是很完善，如果想用，请输入正确的6位股票代码。</p>
+                        <p style={{fontSize:10,color:'#e42b2b'}}>*只有输入正确的6位股票代码，才能开始爬取。</p>
                         {
                             this.state.arr.map(function (item, index) {
                                 return <span key={index}>{'\''+item+'\','}</span>
@@ -112,9 +117,18 @@ class StockSpider extends Component{
                         <button className='spider-button btn-4' disabled={!this.state.value}
                                 onClick={this.handleClick}>爬取数据</button>
                     </div>
-                    <div className="" className={stockContent}>
+                    {
+                        bool ?
+                            this.state.stockContent ?
+                                <div className={stockContent}>
+                                    <p>已监测到股票：{this.state.stockContent}，开始为您爬取</p>
+                                </div> :
+                                <div>未监测到股票，请您核对股票代码。</div>:
+                            <div>  </div>
+                    }
+                    {/*<div className={stockContent}>
                         <p>已监测到股票：{this.state.stockContent}，开始为您爬取</p>
-                    </div>
+                    </div>*/}
                     <div className={"loading "+stockLoading}>
                         <p>正在爬取股票数据</p>
                         <span> </span>
@@ -123,7 +137,9 @@ class StockSpider extends Component{
                         <span> </span>
                         <span> </span>
                     </div>
+                    <a className={stockLink} href={'/online'+downloadHref} target="_blank">在线预览。。。</a> <br/>
                     <a className={stockLink} href={downloadHref}>{this.state.linkContent}</a>
+                    <div>{this.state.allSZcode}</div>
                 </div>
                 <SideBar/>
             </div>

@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Timi blog</title>
+    <title>杨哲迪的个人网站 - Yang Zhedi's Personal Website</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/imgs/48.png">
     <link type="text/css" rel="stylesheet" href="../../static/css/index.css">
 </head>
 <body>
 {#{% extends "base.html" %}#}
-    <div style="margin: 0 auto;width: 60%">
+    <div style="margin: 0 auto 66px;width: 60%">
         {% block content %}
-            <h2>{{  post.title }}</h2>
-            <p>{{ post.timestamp | date:"1,F jS"}}</p>
+            <h1>{{  post.title }}</h1>
+            <p>{{ post.timestamp | date:"Y-m-d H:i"}}</p>
             {# 富文本显示 #}
     {#        {% autoescape off %}#}
             {% load djangomarkdown %}
@@ -18,6 +19,11 @@
                 {{post.body | djangomarkdown }}
     {#        {% endautoescape %}#}
         {% endblock %}
+    </div>
+    <div class="foot-container">
+        <span>京ICP备16065700号-1</span>
+        <span>丨</span>
+        <span>Copyright © 2016-2017, yangzhedi.top , All Rights Reserved</span>
     </div>
 </body>
 </html>
