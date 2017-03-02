@@ -6,7 +6,7 @@ yangzhedi.com网站源码
 [![ENV](https://img.shields.io/badge/react-0.14-blue.svg)](https://github.com/Yangzhedi/myBlog)
 [![ENV](https://img.shields.io/badge/bulid-passing-brightgreen.svg)](https://github.com/Yangzhedi/myBlog)
 
-yzd的个人网站：[www.yangzhedi.top](http://www.yangzhedi.top)
+yzd的个人网站：[www.yangzhedi.com](http://www.yangzhedi.com)
 
 一个前端React后端Django的简易网站模版，
 blog功能和股票爬虫功能已经大体实现，其余功能还在更新中。
