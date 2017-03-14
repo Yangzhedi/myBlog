@@ -32,6 +32,7 @@ class StockSpider extends Component{
         bool = false;
         this.setState({
             // 去除空格，并只保留6位
+            linkContent:'',
             value: e.target.value.replace(/\s/g, "").slice(0,6)
         })
     }

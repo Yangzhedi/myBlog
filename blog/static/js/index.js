@@ -40,7 +40,7 @@ const App = React.createClass({
                 <div className="foot-container">
                     <span>京ICP备16065700号-1</span>
                     <span>丨</span>
-                    <span>Copyright © 2016-2017, yangzhedi.top , All Rights Reserved</span>
+                    <span>Copyright © 2016-2017, yangzhedi.com , All Rights Reserved</span>
                 </div>
             </div>
         )
@@ -50,7 +50,7 @@ const App = React.createClass({
 // 最后，我们用一些 <Route> 来渲染 <Router>。
 // 这些就是路由提供的我们想要的东西。
 ReactDOM.render((
-    <Router  history={hashHistory }>
+    <Router  history={browserHistory }>
         <Route path="/" component={App}>
             <IndexRoute component={Home} />
             <Route path="blog" component={BlogBoardWithPaginator} />
