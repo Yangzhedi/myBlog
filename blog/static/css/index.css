@@ -202,10 +202,11 @@ pre code{
     hyphens: none;
 }
 pre{
-	background-color: #f7f7f9;
+    background-color: #f7f7f9;
     padding: 30px;
     border: 2px solid;
     border-radius: 13px;
+    overflow: auto;
 }
 p code, li code{
     padding: 2px 4px;
